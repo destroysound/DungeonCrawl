@@ -29,7 +29,6 @@ func _on_timer_timeout():
 	weapon.monitoring = false
 	attackTimer.stop()
 
-
 func _on_Weapon_body_entered(body):
 	if body.name == "Enemy":
-		print("hit");
+		print("hit"); 

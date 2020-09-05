@@ -1,9 +1,9 @@
 extends Node2D
 
 onready var nav_2d : Navigation2D = $Navigation2D
-onready var character : KinematicBody2D = $Player
+onready var character : KinematicBody2D = $YSort/Player
 onready var line_2d : Line2D = $Line2D
-onready var camera : Camera2D = get_node("Player/Camera")
+onready var camera : Camera2D = get_node("YSort/Player/Camera")
 
 func _ready():
 	OS.set_window_size(Vector2(1280, 800))

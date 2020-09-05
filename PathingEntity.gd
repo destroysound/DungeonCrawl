@@ -73,3 +73,6 @@ func _physics_process(delta):
 		target = path[0]
 	velocity = (target - position).normalized() * speed
 	velocity = move_and_slide(velocity)
+	
+	if (get_slide_count() > 0):
+		path = []

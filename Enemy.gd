@@ -1,7 +1,7 @@
 extends "res://PathingEntity.gd"
 onready var timer : Timer = $PathingTimer
 onready var nav_2d : Navigation2D = get_node("/root/GameScene/Navigation2D")
-onready var character : KinematicBody2D = get_node("/root/GameScene/Player")
+onready var character : KinematicBody2D = get_node("/root/GameScene/YSort/Player")
 
 
 # Called when the node enters the scene tree for the first time.

@@ -75,21 +75,20 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=14]
-extents = Vector2( 8, 12 )
+extents = Vector2( 8, 5 )
 
 [node name="Enemy" type="KinematicBody2D"]
 script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 0, -16 )
+position = Vector2( 0, -15 )
 frames = SubResource( 13 )
 animation = "walk_up"
-frame = 1
 playing = true
 
 [node name="PathingTimer" type="Timer" parent="."]
 autostart = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -12 )
+position = Vector2( 0, -5 )
 shape = SubResource( 14 )
