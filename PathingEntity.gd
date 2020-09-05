@@ -29,6 +29,7 @@ func move_along_path(distance : float) -> void:
 		path.remove(0)
 
 func set_path(value : PoolVector2Array) -> void:
+	print ("your mom")
 	if value.size() == 0:
 		return
 	path = value
@@ -55,16 +56,12 @@ func _physics_process(delta):
 	match _cardinal_direction:
 		0:
 			animator.play("walk_left")
-			print("West")
 		1:
 			animator.play("walk_up")
-			print("North")
 		2:
 			animator.play("walk_right")
-			print("East")
 		3:
 			animator.play("walk_down")
-			print("South")
 
 	# Remember our current position for next frame
 	_position_last_frame = position
