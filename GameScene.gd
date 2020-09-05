@@ -4,6 +4,8 @@ onready var nav_2d : Navigation2D = $Navigation2D
 onready var character : KinematicBody2D = $YSort/Player
 onready var line_2d : Line2D = $Line2D
 
+func _process(delta):
+	OS.set_window_title(" fps: " + str(Engine.get_frames_per_second()))
 
 func _ready():
 	#OS.set_window_size(Vector2(1280, 800))

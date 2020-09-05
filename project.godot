@@ -17,7 +17,7 @@ _global_script_class_icons={
 
 config/name="DungeonCrawl"
 run/main_scene="res://GameScene.tscn"
-config/icon="res://UItextures/icon.png"
+config/icon="res://icon.png"
 
 [display]
 

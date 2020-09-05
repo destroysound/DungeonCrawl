@@ -8,7 +8,7 @@ var flockForce : float = 0.05
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	speed = 50.0
+	speed = 20.0
 	timer.wait_time = 0.1
 	timer.connect("timeout",self,"_on_timer_timeout") 
 	timer.start() #to start

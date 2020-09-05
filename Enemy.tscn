@@ -20,39 +20,39 @@ region = Rect2( 32, 96, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 1 )
-region = Rect2( 0, 32, 16, 32 )
+region = Rect2( 0, 64, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 1 )
-region = Rect2( 16, 32, 16, 32 )
+region = Rect2( 16, 64, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 1 )
-region = Rect2( 32, 32, 16, 32 )
+region = Rect2( 32, 64, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 16, 32 )
+region = Rect2( 0, 32, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 1 )
-region = Rect2( 16, 0, 16, 32 )
+region = Rect2( 16, 32, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 1 )
-region = Rect2( 32, 0, 16, 32 )
+region = Rect2( 32, 32, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=11]
 atlas = ExtResource( 1 )
-region = Rect2( 0, 64, 16, 32 )
+region = Rect2( 0, 0, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 1 )
-region = Rect2( 16, 64, 16, 32 )
+region = Rect2( 16, 0, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=13]
 atlas = ExtResource( 1 )
-region = Rect2( 32, 64, 16, 32 )
+region = Rect2( 32, 0, 16, 32 )
 
 [sub_resource type="SpriteFrames" id=14]
 animations = [ {
@@ -63,22 +63,22 @@ animations = [ {
 }, {
 "frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ) ],
 "loop": true,
-"name": "walk_left",
+"name": "walk_right",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 8 ), SubResource( 9 ), SubResource( 10 ) ],
 "loop": true,
-"name": "walk_down",
+"name": "walk_left",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 11 ), SubResource( 12 ), SubResource( 13 ) ],
 "loop": true,
-"name": "walk_right",
+"name": "walk_down",
 "speed": 5.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=15]
-extents = Vector2( 10, 7 )
+extents = Vector2( 12, 9 )
 
 [node name="Enemy" type="KinematicBody2D"]
 collision_layer = 2
