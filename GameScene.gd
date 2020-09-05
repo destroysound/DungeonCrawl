@@ -5,6 +5,9 @@ onready var character : KinematicBody2D = $Player
 onready var line_2d : Line2D = $Line2D
 onready var camera : Camera2D = get_node("Player/Camera")
 
+func _ready():
+	OS.set_window_size(Vector2(1280, 800))
+
 func _unhandled_input(event: InputEvent) -> void:
 	if not event is InputEventMouseButton:
 		return
