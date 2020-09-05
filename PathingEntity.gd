@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+var curHp : int = 10
+var maxHp : int = 10
 var speed : = 150.0
 var path : = PoolVector2Array() setget set_path
 
