@@ -7,28 +7,21 @@ var path : = PoolVector2Array() setget set_path
 var velocity = Vector2()
 
 onready var animator : AnimatedSprite = get_node("AnimatedSprite")
+var engagedTimer
+var engaged : bool = false
 
-func _process(delta: float) -> void:
-	pass
-
-func move_along_path(distance : float) -> void:
-	var last_point : = position
-	for index in range(path.size()):
-		var distance_to_next = last_point.distance_to(path[0])
-		if distance <= distance_to_next and distance >= 0.0:
-			position = last_point.linear_interpolate(path[0], distance / distance_to_next)
-			break
-		elif path.size() == 1 and distance >= distance_to_next:
-			position = path[0]
-			break
-
-		distance -= distance_to_next
-		last_point = path[0]
-		path.remove(0)
+func _ready():
+	engagedTimer = Timer.new()
+	add_child(engagedTimer)
+	engagedTimer.autostart = false
+	engagedTimer.wait_time = 0.5
+	engagedTimer.connect("timeout", self, "_engaged_timeout")
 
 func set_path(value : PoolVector2Array) -> void:
 	if value.size() == 0:
 		return
+	if (engaged):
+		engagedTimer.start()
 	path = value
 	path.remove(0)
 	
@@ -74,5 +67,16 @@ func _physics_process(delta):
 	velocity = (target - position).normalized() * speed
 	velocity = move_and_slide(velocity)
 	
-	if (get_slide_count() > 0):
-		path = []
+	if (!engaged and get_slide_count() > 0):
+		for i in get_slide_count():
+			var collision = get_slide_collision(i)
+			_set_engaged(collision)
+
+func _set_engaged(collision):
+	path = []
+	engaged = true
+	engagedTimer.start()
+
+func _engaged_timeout():
+	engaged = false
+	engagedTimer.stop()
