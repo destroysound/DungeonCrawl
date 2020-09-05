@@ -5,12 +5,10 @@ var path : = PoolVector2Array() setget set_path
 
 onready var animator : AnimatedSprite = get_node("AnimatedSprite")
 
-func _ready() -> void:
-	set_process(false)
-
 func _process(delta: float) -> void:
-	var move_distance : = speed * delta
-	move_along_path(move_distance)
+	if path.size():
+		var move_distance : = speed * delta
+		move_along_path(move_distance)
 
 func move_along_path(distance : float) -> void:
 	var last_point : = position
@@ -21,7 +19,6 @@ func move_along_path(distance : float) -> void:
 			break
 		elif path.size() == 1 and distance >= distance_to_next:
 			position = path[0]
-			set_process(false)
 			break
 
 		distance -= distance_to_next
@@ -34,7 +31,6 @@ func set_path(value : PoolVector2Array) -> void:
 		return
 	path = value
 	path.remove(0)
-	set_process(true)
 	
 var _position_last_frame := Vector2()
 var _cardinal_direction = 0
