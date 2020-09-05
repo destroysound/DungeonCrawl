@@ -16,7 +16,15 @@ _global_script_class_icons={
 [application]
 
 config/name="DungeonCrawl"
+run/main_scene="res://GameScene.tscn"
 config/icon="res://icon.png"
+
+[display]
+
+window/size/width=320
+window/size/height=200
+window/stretch/mode="viewport"
+window/stretch/aspect="keep"
 
 [rendering]
 
