@@ -5,6 +5,7 @@ onready var character : KinematicBody2D = get_node("/root/GameScene/YSort/Player
 onready var flockingArea : Area2D = $FlockingArea
 var thresholdDistance : float = 17.0
 var flockForce : float = 0.05
+var xpToGive : = 2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,6 +14,13 @@ func _ready():
 	timer.connect("timeout",self,"_on_timer_timeout") 
 	timer.start() #to start
 	._ready();
+	
+func _physics_process(delta):
+	._physics_process(delta)
+	var distance = global_position - character.global_position
+	if (distance > attackRange):
+		pass
+	
 	
 func _on_timer_timeout():
 	if (engaged):

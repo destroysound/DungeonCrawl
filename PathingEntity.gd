@@ -3,6 +3,9 @@ extends KinematicBody2D
 var curHp : int = 10
 var maxHp : int = 10
 var speed : = 150.0
+var damage : = 5
+var attackRate : = 10.0
+var attackRange : = 5
 var path : = PoolVector2Array() setget set_path
 var velocity = Vector2()
 

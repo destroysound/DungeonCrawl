@@ -1,4 +1,5 @@
 extends "res://PathingEntity.gd"
+onready var ui = get_node("/root/MainScene/CanvasLayer/UI")
 onready var rayCast = get_node("RayCast2D") 
 onready var weapon : Area2D = $Weapon;
 onready var weaponCollider : CollisionShape2D = $Weapon/WeaponCollider;
@@ -7,6 +8,11 @@ var curLevel : int = 0
 var curXp : int = 0
 var xpToNextLevel : int = 50
 var xpToLevelIncreaseRate : float = 1.2
+
+func ready ():
+	ui.update_level_text(curLevel)
+	ui.update_health_bar(curHp, maxHp)
+	ui.update_xp_bar(curXp,xpToNextLevel)
 
 func _process(delta):
 	if (Input.is_action_just_pressed("attack")):
@@ -38,3 +44,27 @@ func _set_engaged(collision):
 		set_path([])
 		engaged = true
 		engagedTimer.start()
+
+func give_xp (amount):
+	curXp += amount
+	ui.update_xp_bar(curXp, xpToNextLevel)
+	if curXp >= xpToNextLevel:
+		level_up()
+
+func level_up ():
+	var overflowXp = curXp - xpToNextLevel
+	xpToNextLevel *= xpToLevelIncreaseRate
+	curXp = overflowXp
+	curLevel += 1
+
+	ui.update_xp_bar(curXp, xpToNextLevel)
+	ui.update_level_text(curLevel)
+
+func take_damage (dmgToTake):
+	curHp -= dmgToTake
+	ui.update_health_bar(curHp, maxHp)
+	if curHp <= 0:
+		die()
+		
+func die():
+	pass
