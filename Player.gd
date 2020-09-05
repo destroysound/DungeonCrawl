@@ -32,3 +32,9 @@ func _on_timer_timeout():
 func _on_Weapon_body_entered(body):
 	if body.name == "Enemy":
 		print("hit"); 
+
+func _set_engaged(collision):
+	if (collision.collider.name == 'Enemy'):
+		set_path([])
+		engaged = true
+		engagedTimer.start()

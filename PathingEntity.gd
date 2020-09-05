@@ -55,22 +55,25 @@ func _physics_process(delta):
 	# Remember our current position for next frame
 	_position_last_frame = position
 
-	if path.size() == 0:
-		return
-		
-	var target = path[0]
-	if position.distance_to(target) < 2:
-		path.remove(0)
-		if path.size() == 0:
-			return
-		target = path[0]
-	velocity = (target - position).normalized() * speed
+
+	velocity = _set_velocity_from_path()		
 	velocity = move_and_slide(velocity)
 	
 	if (!engaged and get_slide_count() > 0):
 		for i in get_slide_count():
 			var collision = get_slide_collision(i)
 			_set_engaged(collision)
+
+func _set_velocity_from_path():
+	if path.size() == 0:
+		return Vector2(0, 0)
+	var target = path[0]
+	if position.distance_to(target) < 2:
+		path.remove(0)
+		if path.size() == 0:
+			return Vector2(0, 0)
+		target = path[0]
+	return (target - position).normalized() * speed
 
 func _set_engaged(collision):
 	path = []

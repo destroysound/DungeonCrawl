@@ -6,7 +6,7 @@
 [sub_resource type="CanvasItemMaterial" id=1]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 4, 8 )
+extents = Vector2( 6, 4 )
 
 [sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 1 )
@@ -22,39 +22,39 @@ region = Rect2( 32, 96, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 16, 32 )
+region = Rect2( 0, 32, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 1 )
-region = Rect2( 16, 0, 16, 32 )
+region = Rect2( 16, 32, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 1 )
-region = Rect2( 32, 0, 16, 32 )
+region = Rect2( 32, 32, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 1 )
-region = Rect2( 0, 64, 16, 32 )
+region = Rect2( 0, 0, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 1 )
-region = Rect2( 16, 64, 16, 32 )
+region = Rect2( 16, 0, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=11]
 atlas = ExtResource( 1 )
-region = Rect2( 32, 64, 16, 32 )
+region = Rect2( 32, 0, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 1 )
-region = Rect2( 0, 32, 16, 32 )
+region = Rect2( 0, 64, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=13]
 atlas = ExtResource( 1 )
-region = Rect2( 16, 32, 16, 32 )
+region = Rect2( 16, 64, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=14]
 atlas = ExtResource( 1 )
-region = Rect2( 32, 32, 16, 32 )
+region = Rect2( 32, 64, 16, 32 )
 
 [sub_resource type="SpriteFrames" id=15]
 animations = [ {
@@ -65,30 +65,30 @@ animations = [ {
 }, {
 "frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
 "loop": true,
-"name": "walk_down",
+"name": "walk_left",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ) ],
 "loop": true,
-"name": "walk_right",
+"name": "walk_down",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 12 ), SubResource( 13 ), SubResource( 14 ) ],
 "loop": true,
-"name": "walk_left",
+"name": "walk_right",
 "speed": 5.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=16]
-extents = Vector2( 7, 5 )
+extents = Vector2( 5, 5 )
 
 [node name="Player" type="KinematicBody2D"]
-collision_mask = 3
+collision_mask = 2147483655
 script = ExtResource( 2 )
 
 [node name="Weapon" type="Area2D" parent="."]
 visible = false
-position = Vector2( 0, -8 )
+position = Vector2( 0, -3 )
 monitoring = false
 
 [node name="WeaponCollider" type="CollisionShape2D" parent="Weapon"]
@@ -101,19 +101,15 @@ points = PoolVector2Array( 0, 0, 18, 0 )
 width = 8.0
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 0, -15 )
+position = Vector2( 0, -10 )
 frames = SubResource( 15 )
 animation = "walk_right"
-frame = 1
+frame = 2
 playing = true
 
 [node name="AttackTimer" type="Timer" parent="."]
 wait_time = 0.3
 
-[node name="RayCast2D" type="RayCast2D" parent="."]
-enabled = true
-
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
-position = Vector2( -1, -5 )
 shape = SubResource( 16 )
 [connection signal="body_entered" from="Weapon" to="." method="_on_Weapon_body_entered"]
