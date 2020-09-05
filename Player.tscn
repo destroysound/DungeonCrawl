@@ -9,62 +9,50 @@
 extents = Vector2( 4, 8 )
 
 [sub_resource type="AtlasTexture" id=3]
-flags = 4
 atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 16, 32 )
+region = Rect2( 0, 64, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=4]
-flags = 4
 atlas = ExtResource( 1 )
-region = Rect2( 16, 0, 16, 32 )
+region = Rect2( 16, 64, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=5]
-flags = 4
 atlas = ExtResource( 1 )
-region = Rect2( 32, 0, 16, 32 )
+region = Rect2( 32, 64, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=6]
-flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 0, 32, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=7]
-flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 16, 32, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=8]
-flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 32, 32, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=9]
-flags = 4
 atlas = ExtResource( 1 )
-region = Rect2( 0, 64, 16, 32 )
+region = Rect2( 0, 0, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=10]
-flags = 4
 atlas = ExtResource( 1 )
-region = Rect2( 16, 64, 16, 32 )
+region = Rect2( 16, 0, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=11]
-flags = 4
 atlas = ExtResource( 1 )
-region = Rect2( 32, 64, 16, 32 )
+region = Rect2( 32, 0, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=12]
-flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 0, 96, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=13]
-flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 16, 96, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=14]
-flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 32, 96, 16, 32 )
 
@@ -72,7 +60,7 @@ region = Rect2( 32, 96, 16, 32 )
 animations = [ {
 "frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
 "loop": true,
-"name": "walk_down",
+"name": "walk_right",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
@@ -82,7 +70,7 @@ animations = [ {
 }, {
 "frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ) ],
 "loop": true,
-"name": "walk_right",
+"name": "walk_down",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 12 ), SubResource( 13 ), SubResource( 14 ) ],
@@ -115,6 +103,7 @@ width = 8.0
 position = Vector2( 0, -16 )
 frames = SubResource( 15 )
 animation = "walk_right"
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

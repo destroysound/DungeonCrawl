@@ -4,13 +4,12 @@ var curHp : int = 10
 var maxHp : int = 10
 var speed : = 150.0
 var path : = PoolVector2Array() setget set_path
+var velocity = Vector2()
 
 onready var animator : AnimatedSprite = get_node("AnimatedSprite")
 
 func _process(delta: float) -> void:
-	if path.size():
-		var move_distance : = speed * delta
-		move_along_path(move_distance)
+	pass
 
 func move_along_path(distance : float) -> void:
 	var last_point : = position
@@ -28,7 +27,6 @@ func move_along_path(distance : float) -> void:
 		path.remove(0)
 
 func set_path(value : PoolVector2Array) -> void:
-	print ("your mom")
 	if value.size() == 0:
 		return
 	path = value
@@ -63,3 +61,15 @@ func _physics_process(delta):
 
 	# Remember our current position for next frame
 	_position_last_frame = position
+
+	if path.size() == 0:
+		return
+		
+	var target = path[0]
+	if position.distance_to(target) < 2:
+		path.remove(0)
+		if path.size() == 0:
+			return
+		target = path[0]
+	velocity = (target - position).normalized() * speed
+	velocity = move_and_slide(velocity)

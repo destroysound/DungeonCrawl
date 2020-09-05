@@ -16,4 +16,3 @@ func _ready():
 func _on_timer_timeout():
 	var new_path : = nav_2d.get_simple_path(global_position, character.global_position)
 	set_path(new_path)
-	print (new_path)
