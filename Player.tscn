@@ -116,7 +116,7 @@ width = 8.0
 position = Vector2( 0, -10 )
 frames = SubResource( 15 )
 animation = "walk_right"
-frame = 1
+frame = 2
 playing = true
 
 [node name="AttackTimer" type="Timer" parent="."]

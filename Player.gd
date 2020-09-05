@@ -44,3 +44,27 @@ func _set_engaged(collision):
 		set_path([])
 		engaged = true
 		engagedTimer.start()
+
+func give_xp (amount):
+	curXp += amount
+	ui.update_xp_bar(curXp, xpToNextLevel)
+	if curXp >= xpToNextLevel:
+		level_up()
+
+func level_up ():
+	var overflowXp = curXp - xpToNextLevel
+	xpToNextLevel *= xpToLevelIncreaseRate
+	curXp = overflowXp
+	curLevel += 1
+
+	ui.update_xp_bar(curXp, xpToNextLevel)
+	ui.update_level_text(curLevel)
+
+func take_damage (dmgToTake):
+	curHp -= dmgToTake
+	ui.update_health_bar(curHp, maxHp)
+	if curHp <= 0:
+		die()
+		
+func die():
+	pass
