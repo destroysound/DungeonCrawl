@@ -2,9 +2,11 @@ extends "res://PathingEntity.gd"
 onready var ui = get_node("/root/GameScene/CanvasLayer/UI")
 onready var rayCast = get_node("RayCast2D")
 onready var line2d = get_node("/root/GameScene/Line2D")
+onready var skillshot = get_node("/root/GameScene/Skillshot")
 onready var weapon : Area2D = $Weapon;
 onready var weaponCollider : CollisionShape2D = $Weapon/WeaponCollider;
 onready var attackTimer : Timer = $AttackTimer;
+onready var gameScene = get_node("/root/GameScene")
 var curLevel : int = 0
 var curXp : int = 0
 var xpToNextLevel : int = 50
@@ -12,6 +14,7 @@ var xpToLevelIncreaseRate : float = 1.2
 var selectedEnemy = null
 var dashClickPosition = null
 var dashPosition = null
+var dashPrep = false
 var dashing = false
 var dashLength = 100
 
@@ -60,6 +63,16 @@ func _physics_process(delta):
 			stop_dash()
 			
 	else:
+		if (dashPrep):
+			var dashVector = (global_position - get_global_mouse_position()).normalized() * dashLength
+			var space_state = get_world_2d().direct_space_state
+			var result = space_state.intersect_ray(global_position, global_position - dashVector, [self], 0b101)
+			if (result):
+				# we hit something, so dash there
+				dashPosition = result.position
+			else:
+				dashPosition = global_position - dashVector
+			skillshot.points = [position, dashPosition]			
 		._physics_process(delta)
 
 func _on_timer_timeout():
@@ -106,7 +119,13 @@ func deselect_enemy():
 		selectedEnemy.deselect()
 	selectedEnemy = null
 
+func prep_dash():
+	dashPrep = true
+	skillshot.visible = true
+
 func begin_dash(position):
+	dashPrep = false
+	skillshot.visible = false
 	path = []
 	set_collision_mask_bit(1, false)
 	dashClickPosition = position
@@ -118,3 +137,4 @@ func stop_dash():
 	set_collision_mask_bit(1, true)
 	dashClickPosition = null
 	dashPosition = null
+	gameScene.restore_pathing()
