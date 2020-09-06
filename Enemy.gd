@@ -16,11 +16,7 @@ func _ready():
 	._ready();
 	
 func _physics_process(delta):
-	._physics_process(delta)
-	var distance = global_position - character.global_position
-	if (distance > attackRange):
-		pass
-	
+	._physics_process(delta)	
 	
 func _on_timer_timeout():
 	if (engaged):
