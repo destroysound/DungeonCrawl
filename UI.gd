@@ -2,7 +2,7 @@ extends Control
  
 onready var levelText : Label = get_node("BG/LevelBG/LevelText")
 onready var healthBar : TextureProgress = get_node("BG/HealthBar")
-onready var xpBar : TextureProgress = get_node("BG/XpBar")
+onready var xpBar : TextureProgress = get_node("BG/XPBar")
 
 func update_level_text (level):
 	levelText.text = str(level)

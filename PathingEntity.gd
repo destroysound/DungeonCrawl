@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-var curHp : int = 10
+var curHp : int = 7
 var maxHp : int = 10
 var speed : = 150.0
 var damage : = 5

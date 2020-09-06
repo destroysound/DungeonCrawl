@@ -34,7 +34,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="BG/LevelBG"]
+[node name="LevelText" type="Label" parent="BG/LevelBG"]
 margin_right = 55.0
 margin_bottom = 55.0
 custom_fonts/font = ExtResource( 2 )

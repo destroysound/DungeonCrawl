@@ -1,5 +1,5 @@
 extends "res://PathingEntity.gd"
-onready var ui = get_node("/root/MainScene/CanvasLayer/UI")
+onready var ui = get_node("/root/GameScene/CanvasLayer/UI")
 onready var rayCast = get_node("RayCast2D") 
 onready var weapon : Area2D = $Weapon;
 onready var weaponCollider : CollisionShape2D = $Weapon/WeaponCollider;
@@ -9,7 +9,7 @@ var curXp : int = 0
 var xpToNextLevel : int = 50
 var xpToLevelIncreaseRate : float = 1.2
 
-func ready ():
+func _ready ():
 	ui.update_level_text(curLevel)
 	ui.update_health_bar(curHp, maxHp)
 	ui.update_xp_bar(curXp,xpToNextLevel)
