@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Health.png-0786f5e2fb2404abef6b4c9c3b579434.stex"
+path="res://.import/LifeBarBG.png-30223bc150a48de69501630c6ab15d02.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UItextures/Health.png"
-dest_files=[ "res://.import/Health.png-0786f5e2fb2404abef6b4c9c3b579434.stex" ]
+source_file="res://UItextures/LifeBarBG.png"
+dest_files=[ "res://.import/LifeBarBG.png-30223bc150a48de69501630c6ab15d02.stex" ]
 
 [params]
 

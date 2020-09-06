@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Health.png-0786f5e2fb2404abef6b4c9c3b579434.stex"
+path="res://.import/RoundedGUI.png-68f3ff5d4c134fbad4df551cc9b80e84.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UItextures/Health.png"
-dest_files=[ "res://.import/Health.png-0786f5e2fb2404abef6b4c9c3b579434.stex" ]
+source_file="res://UItextures/RoundedGUI.png"
+dest_files=[ "res://.import/RoundedGUI.png-68f3ff5d4c134fbad4df551cc9b80e84.stex" ]
 
 [params]
 

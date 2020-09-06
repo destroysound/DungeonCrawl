@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Health.png-0786f5e2fb2404abef6b4c9c3b579434.stex"
+path="res://.import/HPGUI.png-f3f375d89695a78732a9db3ea09ebc62.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UItextures/Health.png"
-dest_files=[ "res://.import/Health.png-0786f5e2fb2404abef6b4c9c3b579434.stex" ]
+source_file="res://UItextures/HPGUI.png"
+dest_files=[ "res://.import/HPGUI.png-f3f375d89695a78732a9db3ea09ebc62.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
