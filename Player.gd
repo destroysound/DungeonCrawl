@@ -22,35 +22,14 @@ func _ready ():
 	ui.update_level_text(curLevel)
 	ui.update_health_bar(curHp, maxHp)
 	ui.update_xp_bar(curXp,xpToNextLevel)
+	attackTimer.connect("timeout",self,"_check_attack") 
+	attackTimer.start()
 
-func _process(delta):
-	if (Input.is_action_just_pressed("attack")):
-		match _cardinal_direction:
-			0:
-				weapon.rotation_degrees = 180
-			1:
-				weapon.rotation_degrees = 270
-			2:
-				weapon.rotation_degrees = 0
-			3:
-				weapon.rotation_degrees = 90
-		weapon.show()
-		weapon.monitoring = true
-		attackTimer.connect("timeout",self,"_on_timer_timeout") 
-		attackTimer.start()
 
 func _physics_process(delta):
-	if (dashing):
+	if dashing:
 		if (!dashPosition):
-			var dashVector = (global_position - dashClickPosition).normalized() * dashLength
-
-			var space_state = get_world_2d().direct_space_state
-			var result = space_state.intersect_ray(global_position, global_position - dashVector, [self], 0b101)
-			if (result):
-				# we hit something, so dash there
-				dashPosition = result.position
-			else:
-				dashPosition = global_position - dashVector
+			dashPosition = calculate_skillshot_vector(dashClickPosition)
 			line2d.points = [position, dashPosition]
 		
 		# now we have a dash position, so we can dash
@@ -63,17 +42,42 @@ func _physics_process(delta):
 			stop_dash()
 			
 	else:
-		if (dashPrep):
-			var dashVector = (global_position - get_global_mouse_position()).normalized() * dashLength
-			var space_state = get_world_2d().direct_space_state
-			var result = space_state.intersect_ray(global_position, global_position - dashVector, [self], 0b101)
-			if (result):
-				# we hit something, so dash there
-				dashPosition = result.position
-			else:
-				dashPosition = global_position - dashVector
+		if dashPrep:
+			dashPosition = calculate_skillshot_vector(get_global_mouse_position())
 			skillshot.points = [position, dashPosition]			
 		._physics_process(delta)
+
+func _check_attack():
+	if !selectedEnemy:
+		return
+		
+	var attackVector = global_position - selectedEnemy.global_position
+	
+	if attackVector.length() < attackRange:
+		var damage = DamageText.new()
+		damage.position = global_position
+		gameScene.call_deferred("add_child", damage)
+		var cardinal_direction = int(4.0 * (attackVector.rotated(PI / 4.0).angle() + PI) / TAU)
+		match cardinal_direction:
+			0:
+				animator.play("attack_right")
+			1:
+				animator.play("attack_down")
+			2:
+				animator.play("attack_left")
+			3:
+				animator.play("attack_up")
+
+func calculate_skillshot_vector(target):
+	var dashVector = (global_position - target).normalized() * dashLength
+
+	var space_state = get_world_2d().direct_space_state
+	var result = space_state.intersect_ray(global_position, global_position - dashVector, [self], 0b101)
+	if (result):
+		# we hit something, so dash there
+		return result.position
+	else:
+		return global_position - dashVector
 
 func _on_timer_timeout():
 	weapon.hide()

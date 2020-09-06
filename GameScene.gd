@@ -24,10 +24,11 @@ func _unhandled_input(event: InputEvent) -> void:
 	if not event is InputEventMouseButton:
 		return
 	if event.button_index == BUTTON_LEFT and event.pressed and !character.dashing:
+		character.deselect_enemy()
 		pathing = true
 		pathingTimer.start()
 		_find_path()
-	if event.button_index == BUTTON_LEFT and !event.pressed and !character.dashing:
+	if event.button_index == BUTTON_LEFT and !event.pressed and !character.dashing and !character.selectedEnemy:
 		pathing = false
 		pathingTimer.stop()
 	if event.button_index == BUTTON_RIGHT and event.pressed and !character.dashing and !character.dashPrep:
@@ -40,9 +41,11 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _find_path():
 	if (pathing):
-		var new_path : = nav_2d.get_simple_path(character.global_position, get_global_mouse_position(), false)
+		var target = get_global_mouse_position()
+		if (character.selectedEnemy):
+			target = character.selectedEnemy.global_position
+		var new_path : = nav_2d.get_simple_path(character.global_position, target, false)
 		character.path = new_path
-		character.deselect_enemy()
 		line_2d.points = new_path
 
 func restore_pathing():
