@@ -3,5 +3,5 @@
 [ext_resource path="res://Fonts/Nintendo-DS-BIOS.ttf" type="DynamicFontData" id=1]
 
 [resource]
-size = 64
+size = 55
 font_data = ExtResource( 1 )
