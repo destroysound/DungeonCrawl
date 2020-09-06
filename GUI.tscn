@@ -1,22 +1,14 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Fonts/Nintendo-DS-BIOS.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Bar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UI.gd" type="Script" id=2]
-[ext_resource path="res://UItextures/Bar_Fill.png" type="Texture" id=3]
-[ext_resource path="res://UItextures/label_HP.png" type="Texture" id=4]
-[ext_resource path="res://UItextures/RoundedGUI.png" type="Texture" id=5]
-[ext_resource path="res://UItextures/LifeBar_BG.png" type="Texture" id=6]
-
-[sub_resource type="DynamicFont" id=1]
-size = 28
-outline_size = 1
-outline_color = Color( 0, 0, 0, 1 )
-extra_spacing_bottom = 6
-font_data = ExtResource( 1 )
+[ext_resource path="res://Ability.tscn" type="PackedScene" id=3]
+[ext_resource path="res://EnergyBar.tscn" type="PackedScene" id=4]
 
 [node name="UI" type="Control"]
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.296
+margin_bottom = 2.08
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -24,6 +16,7 @@ __meta__ = {
 
 [node name="GUI" type="MarginContainer" parent="."]
 anchor_right = 1.0
+margin_bottom = 80.0
 custom_constants/margin_right = 20
 custom_constants/margin_top = 20
 custom_constants/margin_left = 20
@@ -36,66 +29,38 @@ __meta__ = {
 margin_left = 20.0
 margin_top = 20.0
 margin_right = 460.0
-margin_bottom = 104.0
+margin_bottom = 60.0
+custom_constants/separation = 20
 
 [node name="Bars" type="VBoxContainer" parent="GUI/HBoxContainer"]
-margin_right = 232.0
-margin_bottom = 84.0
-
-[node name="Bar" type="HBoxContainer" parent="GUI/HBoxContainer/Bars"]
-margin_right = 232.0
+margin_right = 212.0
 margin_bottom = 40.0
+custom_constants/separation = 1
+alignment = 1
 
-[node name="Count" type="MarginContainer" parent="GUI/HBoxContainer/Bars/Bar"]
-margin_right = 100.0
-margin_bottom = 40.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Bar" parent="GUI/HBoxContainer/Bars" instance=ExtResource( 1 )]
 
-[node name="Background" type="NinePatchRect" parent="GUI/HBoxContainer/Bars/Bar/Count"]
-margin_right = 100.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 100, 40 )
-texture = ExtResource( 5 )
-
-[node name="Title" type="TextureRect" parent="GUI/HBoxContainer/Bars/Bar/Count/Background"]
-margin_right = 52.0
-margin_bottom = 35.0
-texture = ExtResource( 4 )
-stretch_mode = 4
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Number" type="Label" parent="GUI/HBoxContainer/Bars/Bar/Count/Background"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 52.0
-margin_top = 4.0
-margin_right = -7.62939e-06
-margin_bottom = -4.0
-custom_fonts/font = SubResource( 1 )
-text = "10"
-align = 2
-valign = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Gauge" type="TextureProgress" parent="GUI/HBoxContainer/Bars/Bar"]
-margin_left = 104.0
-margin_right = 232.0
-margin_bottom = 40.0
-value = 50.0
-texture_under = ExtResource( 6 )
-texture_progress = ExtResource( 3 )
-tint_progress = Color( 0.984314, 0, 0, 1 )
-nine_patch_stretch = true
-stretch_margin_left = 64
-stretch_margin_right = 64
+[node name="Bar2" parent="GUI/HBoxContainer/Bars" instance=ExtResource( 4 )]
+margin_top = 21.0
+margin_right = 212.0
+margin_bottom = 39.0
 
 [node name="Abilities" type="HBoxContainer" parent="GUI/HBoxContainer"]
-margin_left = 236.0
-margin_right = 236.0
-margin_bottom = 84.0
+margin_left = 232.0
+margin_right = 384.0
+margin_bottom = 40.0
+custom_constants/separation = 8
+
+[node name="Ability1" parent="GUI/HBoxContainer/Abilities" instance=ExtResource( 3 )]
+
+[node name="Ability2" parent="GUI/HBoxContainer/Abilities" instance=ExtResource( 3 )]
+margin_left = 40.0
+margin_right = 72.0
+
+[node name="Ability4" parent="GUI/HBoxContainer/Abilities" instance=ExtResource( 3 )]
+margin_left = 80.0
+margin_right = 112.0
+
+[node name="Ability3" parent="GUI/HBoxContainer/Abilities" instance=ExtResource( 3 )]
+margin_left = 120.0
+margin_right = 152.0
