@@ -57,3 +57,8 @@ collision_mask = 2147483652
 [node name="Enemy5" parent="YSort" instance=ExtResource( 3 )]
 position = Vector2( -96, -16 )
 collision_mask = 2147483652
+
+[node name="Skillshot" type="Line2D" parent="."]
+modulate = Color( 1, 1, 1, 0.498039 )
+begin_cap_mode = 2
+end_cap_mode = 2
