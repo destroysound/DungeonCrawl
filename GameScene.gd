@@ -14,9 +14,10 @@ func _ready():
 func _unhandled_input(event: InputEvent) -> void:
 	if not event is InputEventMouseButton:
 		return
-	if event.button_index != BUTTON_LEFT or not event.pressed:
-		return
-
-	var new_path : = nav_2d.get_simple_path(character.global_position, get_global_mouse_position(), false)
-	character.path = new_path
-	line_2d.points = new_path
+	if event.button_index == BUTTON_LEFT and event.pressed and !character.dashing:
+		var new_path : = nav_2d.get_simple_path(character.global_position, get_global_mouse_position(), false)
+		character.path = new_path
+		character.deselect_enemy()
+		line_2d.points = new_path
+	if event.button_index == BUTTON_RIGHT and event.pressed:
+		character.begin_dash(get_global_mouse_position())
