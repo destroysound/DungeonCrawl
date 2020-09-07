@@ -23,24 +23,29 @@ func _ready():
 func _unhandled_input(event: InputEvent) -> void:
 	if not event is InputEventMouseButton:
 		return
-	if event.button_index == BUTTON_LEFT and event.pressed and !character.dashing:
+	if character.dashing:
+		return
+		
+	if event.button_index == BUTTON_LEFT and event.pressed:
 		character.deselect_enemy()
 		pathing = true
 		pathingTimer.start()
 		_find_path()
-	if event.button_index == BUTTON_LEFT and !event.pressed and !character.dashing and !character.selectedEnemy:
+	if event.button_index == BUTTON_LEFT and !event.pressed:
 		pathing = false
-		pathingTimer.stop()
-	if event.button_index == BUTTON_RIGHT and event.pressed and !character.dashing and !character.dashPrep:
+		if !character.selectedEnemy:
+			pathingTimer.stop()
+	if event.button_index == BUTTON_RIGHT and event.pressed and !character.dashPrep:
 		character.prep_dash()
-	if event.button_index == BUTTON_RIGHT and !event.pressed and !character.dashing and character.dashPrep:
+	if event.button_index == BUTTON_RIGHT and !event.pressed and character.dashPrep:
 		wasPathing = pathing
 		pathing = false
 		pathingTimer.stop()
+		character.deselect_enemy()
 		character.begin_dash(get_global_mouse_position())
 
 func _find_path():
-	if (pathing):
+	if pathing or character.selectedEnemy:
 		var target = get_global_mouse_position()
 		if (character.selectedEnemy):
 			target = character.selectedEnemy.global_position

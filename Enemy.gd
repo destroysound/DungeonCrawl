@@ -26,7 +26,6 @@ func _on_timer_timeout():
 
 	var distance = global_position - character.global_position
 	
-	print(distance.length())
 	if (distance.length() < attackRange):
 		set_path([]);
 		
