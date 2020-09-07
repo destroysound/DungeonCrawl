@@ -21,9 +21,9 @@ var dashLength = 100
 var damageText = preload("res://DamageText.tscn")
 
 func _ready ():
-	ui.update_level_text(curLevel)
-	ui.update_health_bar(curHp, maxHp)
-	ui.update_xp_bar(curXp,xpToNextLevel)
+	#ui.update_level_text(curLevel)
+	#ui.update_health_bar(curHp, maxHp)
+	#ui.update_xp_bar(curXp,xpToNextLevel)
 	attackTimer.connect("timeout",self,"_check_attack") 
 	attackTimer.start()
 

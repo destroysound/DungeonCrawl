@@ -1,66 +1,80 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Bar.tscn" type="PackedScene" id=1]
-[ext_resource path="res://UI.gd" type="Script" id=2]
 [ext_resource path="res://Ability.tscn" type="PackedScene" id=3]
 [ext_resource path="res://EnergyBar.tscn" type="PackedScene" id=4]
 
 [node name="UI" type="Control"]
 anchor_right = 1.0
-anchor_bottom = 0.296
-margin_bottom = 2.08
-script = ExtResource( 2 )
+anchor_bottom = 1.0
+margin_top = 199.0
+margin_right = -19.0
+mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="GUI" type="MarginContainer" parent="."]
-anchor_right = 1.0
-margin_bottom = 80.0
-custom_constants/margin_right = 20
-custom_constants/margin_top = 20
-custom_constants/margin_left = 20
-custom_constants/margin_bottom = 20
+anchor_top = 1.0
+anchor_right = 0.855
+anchor_bottom = 1.0
+margin_top = -58.98
+margin_right = -9.155
+margin_bottom = 1.52588e-05
+mouse_filter = 2
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="GUI"]
-margin_left = 20.0
-margin_top = 20.0
-margin_right = 460.0
-margin_bottom = 60.0
-custom_constants/separation = 20
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 375.0
+margin_bottom = 48.0
+mouse_filter = 2
+custom_constants/separation = 10
 
 [node name="Bars" type="VBoxContainer" parent="GUI/HBoxContainer"]
-margin_right = 212.0
-margin_bottom = 40.0
+margin_right = 160.0
+margin_bottom = 38.0
+mouse_filter = 2
 custom_constants/separation = 1
 alignment = 1
 
 [node name="Bar" parent="GUI/HBoxContainer/Bars" instance=ExtResource( 1 )]
+margin_top = 4.0
+margin_right = 160.0
+margin_bottom = 19.0
+mouse_filter = 2
 
 [node name="Bar2" parent="GUI/HBoxContainer/Bars" instance=ExtResource( 4 )]
-margin_top = 21.0
-margin_right = 212.0
-margin_bottom = 39.0
+margin_top = 20.0
+margin_right = 160.0
+margin_bottom = 34.0
 
 [node name="Abilities" type="HBoxContainer" parent="GUI/HBoxContainer"]
-margin_left = 232.0
-margin_right = 384.0
-margin_bottom = 40.0
+margin_left = 170.0
+margin_top = 7.0
+margin_right = 290.0
+margin_bottom = 31.0
+mouse_filter = 2
+size_flags_vertical = 4
 custom_constants/separation = 8
 
 [node name="Ability1" parent="GUI/HBoxContainer/Abilities" instance=ExtResource( 3 )]
 
 [node name="Ability2" parent="GUI/HBoxContainer/Abilities" instance=ExtResource( 3 )]
-margin_left = 40.0
-margin_right = 72.0
+margin_left = 32.0
+margin_right = 56.0
 
 [node name="Ability4" parent="GUI/HBoxContainer/Abilities" instance=ExtResource( 3 )]
-margin_left = 80.0
-margin_right = 112.0
+margin_left = 64.0
+margin_right = 88.0
 
 [node name="Ability3" parent="GUI/HBoxContainer/Abilities" instance=ExtResource( 3 )]
-margin_left = 120.0
-margin_right = 152.0
+margin_left = 96.0
+margin_right = 120.0
