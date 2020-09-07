@@ -18,6 +18,8 @@ var dashPrep = false
 var dashing = false
 var dashLength = 100
 
+var damageText = preload("res://DamageText.tscn")
+
 func _ready ():
 	ui.update_level_text(curLevel)
 	ui.update_health_bar(curHp, maxHp)
@@ -54,7 +56,7 @@ func _check_attack():
 	var attackVector = global_position - selectedEnemy.global_position
 	
 	if attackVector.length() < attackRange:
-		var damage = DamageText.new()
+		var damage = damageText.instance()
 		damage.position = global_position
 		gameScene.call_deferred("add_child", damage)
 		var cardinal_direction = int(4.0 * (attackVector.rotated(PI / 4.0).angle() + PI) / TAU)
