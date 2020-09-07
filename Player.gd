@@ -57,7 +57,8 @@ func _check_attack():
 	
 	if attackVector.length() < attackRange:
 		var damage = damageText.instance()
-		damage.position = global_position
+		damage.position = selectedEnemy.global_position + Vector2(0, -16)
+		damage.amount = roll_damage()
 		gameScene.call_deferred("add_child", damage)
 		var cardinal_direction = int(4.0 * (attackVector.rotated(PI / 4.0).angle() + PI) / TAU)
 		match cardinal_direction:
