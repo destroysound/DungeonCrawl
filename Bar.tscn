@@ -16,6 +16,7 @@ font_data = ExtResource( 1 )
 [node name="Bar" type="HBoxContainer"]
 margin_right = 212.0
 margin_bottom = 15.0
+mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -23,6 +24,7 @@ __meta__ = {
 [node name="Count" type="MarginContainer" parent="."]
 margin_right = 60.0
 margin_bottom = 15.0
+mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -66,6 +68,7 @@ __meta__ = {
 margin_left = 64.0
 margin_right = 160.0
 margin_bottom = 15.0
+mouse_filter = 2
 value = 50.0
 texture_under = ExtResource( 5 )
 texture_progress = ExtResource( 2 )

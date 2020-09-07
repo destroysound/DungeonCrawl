@@ -7,6 +7,7 @@
 [node name="UI" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -20,6 +21,7 @@ margin_top = -37.7484
 margin_right = 263.991
 margin_bottom = 26.2516
 rect_scale = Vector2( 0.414842, 0.353997 )
+mouse_filter = 2
 color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -30,6 +32,7 @@ margin_left = 5.0
 margin_top = 5.0
 margin_right = 60.0
 margin_bottom = 60.0
+mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -51,6 +54,7 @@ margin_left = 64.0
 margin_top = 5.0
 margin_right = 246.0
 margin_bottom = 35.0
+mouse_filter = 2
 value = 50.0
 texture_under = ExtResource( 1 )
 texture_progress = ExtResource( 1 )
@@ -66,6 +70,7 @@ margin_left = 64.0
 margin_top = 40.0
 margin_right = 246.0
 margin_bottom = 60.0
+mouse_filter = 2
 value = 50.0
 texture_under = ExtResource( 1 )
 texture_progress = ExtResource( 1 )
