@@ -198,7 +198,6 @@ shape = SubResource( 3 )
 position = Vector2( 0, -10 )
 frames = SubResource( 24 )
 animation = "attack_down"
-frame = 1
 playing = true
 
 [node name="CanvasModulate" type="CanvasModulate" parent="AnimatedSprite"]

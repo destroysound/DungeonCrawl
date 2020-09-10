@@ -23,7 +23,7 @@ func roll_damage ():
 func take_damage (dmgToTake):
 	curHp -= dmgToTake
 	if curHp <= 0:
-		die()
+		_die()
 		
-func die():
+func _die():
 	queue_free()

@@ -4,10 +4,6 @@
 
 [node name="LifeBar" instance=ExtResource( 1 )]
 margin_right = 160.0
-mouse_filter = 2
-
-[node name="Count" parent="." index="0"]
-mouse_filter = 2
 
 [node name="Gauge" parent="." index="1"]
-mouse_filter = 2
+max_value = 1000.0

@@ -20,9 +20,13 @@ var dashLength = 100
 
 var damageText = preload("res://DamageText.tscn")
 
+signal health_changed(curHp, maxHp)
+signal died()
+
 func _ready ():
 	maxHp = 1000
 	curHp = 1000
+	emit_signal("health_changed", curHp, maxHp)
 	#ui.update_level_text(curLevel)
 	#ui.update_health_bar(curHp, maxHp)
 	#ui.update_xp_bar(curXp,xpToNextLevel)
@@ -60,7 +64,7 @@ func _check_attack():
 	if attackVector.length() < attackRange:
 		var damage = damageText.instance()
 		damage.position = selectedEnemy.global_position + Vector2(0, -16)
-		var damageOutput = roll_damage()
+		var damageOutput = selectedEnemy.roll_damage()
 		damage.amount = damageOutput[0]
 		damage.critted = damageOutput[1]
 		gameScene.call_deferred("add_child", damage)
@@ -117,6 +121,7 @@ func level_up ():
 	ui.update_level_text(curLevel)
 
 func take_damage (dmgToTake):
+	emit_signal("health_changed", curHp, maxHp)
 	.take_damage(dmgToTake)
 
 func select_enemy(enemy):
@@ -148,3 +153,7 @@ func stop_dash():
 	dashClickPosition = null
 	dashPosition = null
 	gameScene.restore_pathing()
+
+func _die():
+	emit_signal("died")
+	._die()
