@@ -19,12 +19,10 @@ font_data = ExtResource( 2 )
 [node name="Bar" instance=ExtResource( 1 )]
 margin_right = 192.0
 margin_bottom = 18.0
-mouse_filter = 2
 
 [node name="Count" parent="." index="0"]
 margin_right = 45.0
 margin_bottom = 18.0
-mouse_filter = 2
 
 [node name="Background" parent="Count" index="0"]
 margin_right = 45.0
@@ -46,7 +44,6 @@ text = "EP"
 margin_left = 49.0
 margin_right = 121.0
 margin_bottom = 18.0
-mouse_filter = 2
 tint_progress = Color( 0.956863, 1, 0.247059, 1 )
 stretch_margin_left = 36
 stretch_margin_right = 36
