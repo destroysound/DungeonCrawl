@@ -21,6 +21,8 @@ var dashLength = 100
 var damageText = preload("res://DamageText.tscn")
 
 func _ready ():
+	maxHp = 1000
+	curHp = 1000
 	#ui.update_level_text(curLevel)
 	#ui.update_health_bar(curHp, maxHp)
 	#ui.update_xp_bar(curXp,xpToNextLevel)
@@ -116,7 +118,6 @@ func level_up ():
 
 func take_damage (dmgToTake):
 	.take_damage(dmgToTake)
-	ui.update_health_bar(curHp, maxHp)
 
 func select_enemy(enemy):
 	if selectedEnemy:

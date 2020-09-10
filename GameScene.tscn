@@ -38,23 +38,11 @@ width = 1.0
 current = true
 
 [node name="Enemy" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( -176, 64 )
+position = Vector2( 176, -8 )
 collision_mask = 2147483652
 
 [node name="Enemy2" parent="YSort" instance=ExtResource( 3 )]
 position = Vector2( -144, 64 )
-collision_mask = 2147483652
-
-[node name="Enemy3" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( -160, -32 )
-collision_mask = 2147483652
-
-[node name="Enemy4" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( -96, -96 )
-collision_mask = 2147483652
-
-[node name="Enemy5" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( -96, -16 )
 collision_mask = 2147483652
 
 [node name="Skillshot" type="Line2D" parent="."]

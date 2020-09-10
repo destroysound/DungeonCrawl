@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
-var curHp : int = 7
-var maxHp : int = 10
+var curHp : int = 50
+var maxHp : int = 50
 var damage : = 5
 var attackRate : = 10.0
 var attackRange : = 20
@@ -12,10 +12,13 @@ var critChance := .5
 var rng = RandomNumberGenerator.new()
 
 func roll_damage ():
+	var dmgToTake : int = rng.randi_range(1, attackRandom) + attackBase
 	var critted : bool = rng.randf_range(0,1) < critChance
 	if critted:
-		return [(rng.randi_range(0, attackRandom-1) + attackBase) * 2, critted]
-	return [rng.randi_range(0, attackRandom-1) + attackBase, critted]
+		dmgToTake = (rng.randi_range(0, attackRandom-1) + attackBase) * 2
+	take_damage(dmgToTake)
+	return [dmgToTake, critted]
+
 
 func take_damage (dmgToTake):
 	curHp -= dmgToTake
@@ -23,4 +26,4 @@ func take_damage (dmgToTake):
 		die()
 		
 func die():
-	pass
+	queue_free()
