@@ -4,12 +4,18 @@ onready var nav_2d : Navigation2D = get_node("/root/GameScene/Navigation2D")
 onready var character : KinematicBody2D = get_node("/root/GameScene/YSort/Player")
 onready var flockingArea : Area2D = $FlockingArea
 onready var targetIcon : Sprite = $TargetIcon
+onready var attackTimer : Timer = $AttackTimer;
+onready var gameScene = get_node("/root/GameScene")
 var thresholdDistance : float = 17.0
 var flockForce : float = 5
 var xpToGive : = 2
+var attackStarted : = false
+
+var damageText = preload("res://DamageText.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	attackTimer.connect("timeout",self,"_check_attack") 
 	speed = 10.0
 	timer.wait_time = 0.5
 	timer.connect("timeout",self,"_on_timer_timeout") 
@@ -18,6 +24,16 @@ func _ready():
 	._ready();
 	
 func _physics_process(delta):
+	var attackVector = global_position - character.global_position
+	if !attackStarted:
+		if attackVector.length() < attackRange:
+			attackStarted = true
+			attackTimer.start()
+	else: 
+		if attackVector.length() > attackRange:
+			attackStarted = false
+			attackTimer.stop()
+			
 	._physics_process(delta)	
 	
 func _on_timer_timeout():
@@ -45,6 +61,15 @@ func _set_velocity_from_path():
 			var flockVel = flockNormal * (flockForce / vector.length()) * speed
 			origVel = origVel - flockVel
 	return origVel
+	
+func _check_attack():
+	var attackVector = global_position - character.global_position
+	
+	if attackVector.length() < attackRange:
+		var damage = damageText.instance()
+		damage.position = character.global_position + Vector2(0, -16)
+		damage.amount = roll_damage()
+		gameScene.call_deferred("add_child", damage)
 
 func _set_engaged(collision):
 	if (collision.collider.name == 'Player'):
