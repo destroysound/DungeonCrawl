@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Tiles/tileA2_ground.tres" type="TileSet" id=1]
+[ext_resource path="res://RandomMap.gd" type="Script" id=3]
+
+[node name="RandomMap" type="TileMap"]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 16, 16 )
+collision_layer = 4
+format = 1
+script = ExtResource( 3 )
