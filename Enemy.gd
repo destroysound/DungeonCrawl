@@ -68,7 +68,9 @@ func _check_attack():
 	if attackVector.length() < attackRange:
 		var damage = damageText.instance()
 		damage.position = character.global_position + Vector2(0, -16)
-		damage.amount = roll_damage()
+		var damageOutput = roll_damage()
+		damage.amount = damageOutput[0]
+		damage.critted = damageOutput[1]
 		gameScene.call_deferred("add_child", damage)
 
 func _set_engaged(collision):
