@@ -8,6 +8,7 @@ var rng = RandomNumberGenerator.new()
 
 func _ready():
 	rng.randomize()
+	
 	for i in range(rng.randi_range(5, 10)):
 		var newRoom
 		if (rng.randi_range(0, 1)):
