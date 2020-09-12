@@ -5,4 +5,3 @@
 [node name="DungeonTile" type="TileMap"]
 format = 1
 script = ExtResource( 1 )
-exitDirections = null

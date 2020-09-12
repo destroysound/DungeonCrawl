@@ -6,6 +6,6 @@
 [node name="RandomMap" type="TileMap"]
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 16, 16 )
-collision_layer = 4
+collision_layer = 0
 format = 1
 script = ExtResource( 3 )
