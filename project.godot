@@ -13,9 +13,15 @@ _global_script_classes=[ {
 "class": "DamageText",
 "language": "GDScript",
 "path": "res://DamageText.gd"
+}, {
+"base": "Resource",
+"class": "ItemResource",
+"language": "GDScript",
+"path": "res://Item.gd"
 } ]
 _global_script_class_icons={
-"DamageText": ""
+"DamageText": "",
+"ItemResource": ""
 }
 
 [application]
