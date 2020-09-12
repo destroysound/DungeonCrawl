@@ -2,6 +2,8 @@ extends KinematicBody2D
 
 var curHp : int = 50
 var maxHp : int = 50
+var curStamina : int = 50
+var maxStamina : int = 50
 var damage : = 5
 var attackRate : = 10.0
 var attackRange : = 20
@@ -19,6 +21,12 @@ func roll_damage ():
 	take_damage(dmgToTake)
 	return [dmgToTake, critted]
 
+func lose_stamina (staminaToLose):
+	if curStamina < staminaToLose:
+		return false
+		
+	curStamina -= staminaToLose
+	return true
 
 func take_damage (dmgToTake):
 	curHp -= dmgToTake

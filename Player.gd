@@ -21,12 +21,16 @@ var dashLength = 100
 var damageText = preload("res://DamageText.tscn")
 
 signal health_changed(curHp, maxHp)
+signal stamina_changed(curStamina, maxStamina)
 signal died()
 
 func _ready ():
 	maxHp = 1000
 	curHp = 1000
+	maxStamina = 100
+	curStamina = 100
 	emit_signal("health_changed", curHp, maxHp)
+	emit_signal("stamina_changed", curStamina, maxStamina)
 	#ui.update_level_text(curLevel)
 	#ui.update_health_bar(curHp, maxHp)
 	#ui.update_xp_bar(curXp,xpToNextLevel)
@@ -123,6 +127,10 @@ func level_up ():
 func take_damage (dmgToTake):
 	emit_signal("health_changed", curHp, maxHp)
 	.take_damage(dmgToTake)
+	
+func lose_stamina (staminaToLose):
+	emit_signal("stamina_changed", curStamina, maxStamina)
+	return .lose_stamina(staminaToLose)
 
 func select_enemy(enemy):
 	if selectedEnemy:
@@ -141,11 +149,14 @@ func prep_dash():
 func begin_dash(position):
 	dashPrep = false
 	skillshot.visible = false
-	path = []
-	set_collision_mask_bit(1, false)
-	dashClickPosition = position
-	dashPosition = null
-	dashing = true
+	
+	var didLoseStamina = lose_stamina(5)
+	if didLoseStamina:
+		path = []
+		set_collision_mask_bit(1, false)
+		dashClickPosition = position
+		dashPosition = null
+		dashing = true
 	
 func stop_dash():
 	dashing = false;
