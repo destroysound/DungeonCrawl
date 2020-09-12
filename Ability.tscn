@@ -1,8 +1,9 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Fonts/Nintendo-DS-BIOS.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://System/Sprites/Skull1.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Skull1.png" type="Texture" id=2]
 [ext_resource path="res://UItextures/RoundedGUI.png" type="Texture" id=3]
+
 
 [sub_resource type="DynamicFont" id=1]
 size = 13
