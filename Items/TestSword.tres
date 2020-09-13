@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource( 1 )
-name = ""
+name = "Sword"
 stackable = false
 max_stack_size = 1
-type = 0
+type = 3

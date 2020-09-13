@@ -20,6 +20,9 @@ var dashLength = 100
 
 var damageText = preload("res://DamageText.tscn")
 
+var invintory_resource = load("res://Player/Invintory.gd")
+var invintory = invintory_resource.new()
+
 signal health_changed(curHp, maxHp)
 signal stamina_changed(curStamina, maxStamina)
 signal died()
