@@ -14,5 +14,5 @@ func _on_player_inventory_changed(inventory):
 	
 	for item in inventory.get_items():
 		var item_label = Label.new()
-		item_label.text = "%s * %d" % [item.item_reference.name, item.quantity]
+		item_label.text = "%s x%d" % [item.item_reference.name, item.quantity]
 		add_child(item_label)
