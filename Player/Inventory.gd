@@ -1,13 +1,13 @@
 extends Node
-class_name Invintory
+class_name inventory
 
-signal invintory_changed
+signal inventory_changed
 
 export var _items = Array() setget set_items, get_items
 
 func set_items(new_items):
 	_items = new_items
-	emit_signal("invintory_changed", self)
+	emit_signal("inventory_changed", self)
 	
 func get_items():
 	return _items
@@ -33,15 +33,15 @@ func add_item(item_name, quantity):
 			if remaining_quantity == 0:
 				break 
 				
-			var invintory_item = _items[i]
+			var inventory_item = _items[i]
 			
-			if invintory_item.item_reference.name != item.name:
+			if inventory_item.item_reference.name != item.name:
 				continue
 				
-			if invintory_item.quantity < max_stack_size:
-				var original_quantity = invintory_item.quantity
-				invintory_item.quantity = min(original_quantity + remaining_quantity, max_stack_size)
-				remaining_quantity -= invintory_item.quantity - original_quantity
+			if inventory_item.quantity < max_stack_size:
+				var original_quantity = inventory_item.quantity
+				inventory_item.quantity = min(original_quantity + remaining_quantity, max_stack_size)
+				remaining_quantity -= inventory_item.quantity - original_quantity
 	while remaining_quantity > 0:
 		var new_item = {
 			item_reference = item,
@@ -50,4 +50,4 @@ func add_item(item_name, quantity):
 		_items.append(new_item)
 		remaining_quantity -= new_item.quantity
 	
-	emit_signal("invintory_changed", self)
+	emit_signal("inventory_changed", self)

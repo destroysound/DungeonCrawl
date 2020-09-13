@@ -2,8 +2,6 @@ extends Node2D
 
 signal player_initialised
 
-var player
-
 onready var nav_2d : Navigation2D = $Navigation2D
 onready var character : KinematicBody2D = $YSort/Player
 onready var line_2d : Line2D = $Line2D
@@ -12,7 +10,7 @@ var pathing : bool = false
 var wasPathing: bool = false
 
 func _process(delta):
-	if not player:
+	if not character:
 		initialise_player()
 		return
 	OS.set_window_title(" fps: " + str(Engine.get_frames_per_second()))
@@ -28,23 +26,23 @@ func _ready():
 	pass
 	
 func initialise_player():
-	player = get_tree().get_root().get_node("/root/GameScene/YSort/Player")
-	if not player:
+	character = get_tree().get_root().get_node("/root/GameScene/YSort/Player")
+	if not character:
 		return
 	
-	emit_signal("player_initialised", player)
+	emit_signal("player_initialised", character)
 	
-	player.invintory.connect("invintory_changed", self, "_on_player_invintory_changed")
+	character.inventory.connect("inventory_changed", self, "_on_player_inventory_changed")
 	
-	var existing_invintory = load("user://invintory.tres")
-	if existing_invintory:
-		player.invintory.set_items(existing_invintory.get_items())
+	var existing_inventory = load("user://inventory.tres")
+	if existing_inventory:
+		character.inventory.set_items(existing_inventory.get_items())
 	else:
 		#give player 3 potions
-		player.invintory.add_items("Potion", 3)
+		character.inventory.add_items("Potion", 3)
 
-func _on_player_invintory_changed(invintory):
-	ResourceSaver.save("user://invintory.tres", invintory)
+func _on_player_inventory_changed(inventory):
+	ResourceSaver.save("user://inventory.tres", inventory)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if not event is InputEventMouseButton:

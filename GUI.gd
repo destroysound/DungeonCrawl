@@ -11,8 +11,8 @@ var animated_health = 0
 var animated_stamina = 0
 
 func _ready():
-	var playerMaxHp = player.maxHp
 	var playerMaxStamina = player.maxStamina
+	var playerMaxHp = player.maxHp
 	life_bar.max_value = playerMaxHp
 	stamina_bar.max_value = playerMaxStamina
 	animated_health = player.curHp

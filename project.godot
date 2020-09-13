@@ -14,20 +14,20 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://DamageText.gd"
 }, {
-"base": "Node",
-"class": "Invintory",
-"language": "GDScript",
-"path": "res://Player/Invintory.gd"
-}, {
 "base": "Resource",
 "class": "ItemResource",
 "language": "GDScript",
 "path": "res://Item.gd"
+}, {
+"base": "Node",
+"class": "inventory",
+"language": "GDScript",
+"path": "res://Player/Inventory.gd"
 } ]
 _global_script_class_icons={
 "DamageText": "",
-"Invintory": "",
-"ItemResource": ""
+"ItemResource": "",
+"inventory": ""
 }
 
 [application]
@@ -38,7 +38,6 @@ config/icon="res://icon.png"
 
 [autoload]
 
-GameScene="*res://Managment/GameScene.gd"
 ItemDatabase="*res://Managment/ItemDatabase.gd"
 
 [display]

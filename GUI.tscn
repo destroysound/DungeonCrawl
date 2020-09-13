@@ -1,15 +1,14 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://LifeBar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://GUI.gd" type="Script" id=2]
 [ext_resource path="res://Ability.tscn" type="PackedScene" id=3]
 [ext_resource path="res://EnergyBar.tscn" type="PackedScene" id=4]
+[ext_resource path="res://InventoryGrid.gd" type="Script" id=5]
 
 [node name="UI" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 199.0
-margin_right = -19.0
 mouse_filter = 2
 script = ExtResource( 2 )
 __meta__ = {
@@ -35,7 +34,7 @@ __meta__ = {
 [node name="HBoxContainer" type="HBoxContainer" parent="GUI"]
 margin_left = 4.0
 margin_top = 24.0
-margin_right = 374.0
+margin_right = 390.0
 margin_bottom = 54.0
 mouse_filter = 2
 size_flags_vertical = 8
@@ -79,3 +78,24 @@ margin_right = 88.0
 [node name="Ability3" parent="GUI/HBoxContainer/Abilities" instance=ExtResource( 3 )]
 margin_left = 96.0
 margin_right = 120.0
+
+[node name="Panel" type="Panel" parent="."]
+margin_left = 294.0
+margin_top = 14.0
+margin_right = 468.0
+margin_bottom = 195.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
